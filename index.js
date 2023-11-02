@@ -134,5 +134,69 @@ function addRole(){
         })
     })
 }
+
+function addEmployee() {
+    db.query("SELECT * FROM role", (err, data) => {
+        if (err) throw err;
+        let roles = data.map((role) => ({
+            name: role.title,
+            value: role.id
+        }));
+
+        db.query("SELECT * FROM employee", (err, data) => {
+            if (err) throw err;
+            let managers = data.map((manager) => ({
+                name: `${manager.first_name}  ${manager.last_name}`,
+                value: manager.id
+            }))
+            
+
+
+            prompt([
+                {
+                    type: "input",
+                    name: "firstName",
+                    message: "Enter employee first name"
+                },
+                {
+                    type: "input",
+                    name: "lastName",
+                    message: "Enter employee last name"
+                },
+                {
+                    type: "list",
+                    name: "role",
+                    message: "What is the role that this employee will have?",
+                    choices: roles
+                },
+                {
+                    type: "list",
+                    name: "manager",
+                    message: "Who is the new employee's manager?",
+                    choices: managers
+                },
+
+            ]).then((answers) => {
+                db.query("INSERT INTO employee SET ?",
+                    {
+                        first_name: answers.firstName,
+                        last_name: answers.lastName,
+                        role_id: answers.role,
+                        manager_id: answers.manager
+                    }, (err, data) => {
+                        if (err) throw err;
+                        console.log(`The employee ${answers.firstName} ${answers.lastName} was sucessfully added!`);
+                        mainPrompt()
+                    })
+            })
+
+
+
+
+        })
+    })
+}
+
+
 mainPrompt()
 
