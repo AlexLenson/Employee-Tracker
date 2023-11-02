@@ -1,16 +1,15 @@
 # Employee-Tracker
 ## Overview
 
-The purpose of this project is to build a Node.js command-line application that takes in user input to generate a logo and save it as an SVG file. The application prompts the user to select a color and shape, provide text for the logo, and save the generated SVG to a .svg file.
-- User is prompted to enter text, text color, shape, and shape color for the SVG logo
-- SVG file is generated based on user's input using the inquirer and fs packages
-- Unit tests conducted using Jest
+The purpose of this project is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL. The application uses the Inquirer package to prompt the user in order to perform database queries to the employees database.
+- Database is seeded with employees, roles and department data
+- User is able to make queries to the employees database using prompts from the inquirer package
 
-## Generated SVG Logo Example
-Here is an example of an SVG logo generated entirely through command line prompts!
+## Employee Tracker Database Example
+Here is an example of a the employee tracker database.
 
-![screenshot](./images/logo.png)
+![screenshot](./images/employee_db.png)
 
 
 ## Video Demonstration
-See a video demonstration: [Watch Video](https://drive.google.com/file/d/1RD9kyh-PyWxyZIgZ7Q7Yw6YZEgKYSGPn/view)
+See a video demonstration: [Watch Video](https://drive.google.com/file/d/1D8j9SIlmFU6jFee9s-rXXX9UhQGrq23-/view)
